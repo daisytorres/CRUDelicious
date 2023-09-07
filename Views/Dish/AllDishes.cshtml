@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "All Dishes";
+}
+
+<style>
+    .custom-card {
+        border: 8px solid #ff1493; 
+    }
+
+    .custom-header {
+        background-color: #ff69b4; 
+        color: white; 
+    }
+</style>
+
+@model List<Dish> //data type is list of dishes and Dish is coming from Controller where we pass in Dish in the return view
+
+<div class="container mt-4">
+    <div class="card custom-card">
+        <div class="card-header custom-header">
+            <h1>Check out your favorite Drag Queen's dishes!</h1>
+        </div>
+
+        <div class="card-body">
+        @foreach (Dish d in Model) //Cap M is the data inside the model and accessing it
+        {
+            <p><a asp-route-dishId="@d.DishId" asp-action ="ViewDish" asp-controller="Dish"> @d.DishName </a> by @d.Chef </p>
+        }
+
+        </div>
+    </div>
+</div>

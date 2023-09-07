@@ -1,0 +1,33 @@
+<style>
+    .custom-card {
+        border: 8px solid #ff1493;
+    }
+
+    .custom-header {
+        background-color: #ff69b4;
+        color: white;
+    }
+</style>
+
+
+@model Dish
+
+
+<div class="container mt-4">
+    <div class="card custom-card">
+        <div class="card-header custom-header">
+            <h1>@Model.DishName</h1>
+        </div>
+
+        <div class="card-body">
+            <p>@Model.Description </p>
+            <p>Calories: @Model.Calories </p>
+            <p>Tastiness: @Model.Tastiness </p>
+            <a asp-action="EditDish" asp-controller="Dish" asp-route-dishId="@Model.DishId" class="btn btn-primary">Edit</a>
+            <p></p>
+            <form asp-action="DeleteDish" asp-controller="Dish" method="POST" asp-route-dishId="@Model.DishId">
+                <button class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
