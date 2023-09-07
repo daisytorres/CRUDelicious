@@ -116,7 +116,7 @@ public class DishController : Controller
             _context.Remove(ToBeDeleted); //if it is not null, means we found it and can delete
             _context.SaveChanges();
         }
-        return RedirectToAction(""); //if it is null, then we can just reroute to home page since we did not find a match
+        return RedirectToAction("AllDishes"); //if it is null, then we can just reroute to home page since we did not find a match
     }
 
 
