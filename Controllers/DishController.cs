@@ -49,7 +49,7 @@ public class DishController : Controller
         }
         _context.Add(newDish);
         _context.SaveChanges();
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("AllDishes");
     }
 
 
@@ -61,7 +61,7 @@ public class DishController : Controller
         Dish? SingleDish = _context.Dishes.FirstOrDefault(d => d.DishId == dishId); //firstordefault so that it does not crash if it does not find, sends null instead
                                                                 //making our DishId from our model key == to our parameter 
         if (SingleDish == null){
-            return RedirectToAction(""); //if they click on something that does not exit, send them back home
+            return RedirectToAction("AllDishes"); //if they click on something that does not exit, send them back home
         }
         return View(SingleDish); //if exists, take them to page for that selection
     } 
@@ -75,7 +75,7 @@ public class DishController : Controller
         Dish? ToBeEdited = _context.Dishes.FirstOrDefault(d => d.DishId == dishId); 
         if (ToBeEdited == null)
         {
-            return RedirectToAction(""); //if they manually edited URL or something we we got a null item
+            return RedirectToAction("AllDishes"); //if they manually edited URL or something we we got a null item
         }
         return View(ToBeEdited); //passing this in so that it can be our editing model in the viewing page
     }
